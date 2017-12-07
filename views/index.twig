@@ -1,0 +1,33 @@
+{% extends 'layouts/layout.inc.twig' %}
+
+{% block title %}Training guest book - Главная страница{% endblock %}
+{% block description %}Описание сайта для SEO{% endblock %}
+{% block keywords %}Ключевые слова для SEO{% endblock %}
+
+{% block content %}
+
+    <div class="starter-template">
+        <h1>Training guest book</h1>
+        <p><a href="/form">Добавить отзыв</a></p>
+
+        <form action="" method="post">
+        <button type="submit" name="sortdate" value="{{ sortdate }}">Сортировать по дате отзыва</button>
+        </form>
+        <form action="" method="post">
+        <button type="submit" name="sortlike" value="{{ sortlike }}">Сортировать по кол-ву голосов</button>
+        </form>
+
+    </div>
+
+    {% for review in reviews %}
+        <div class="note">
+            <p>
+                <span class="date">{{ review.created_at|date("Y-m-d") }}</span> -
+                <span class="name">{{ review.first_name }}</span>
+            </p>
+            <p>{{ review.note }}<a href="/review/{{ review.id }}">Подробнее</a></p>
+            <p>{{ review.likes }} голосов - <a href="/vote/{{ review.id }}">Проголосовать</a></p>
+        </div>
+    {% endfor %}
+
+{% endblock %}

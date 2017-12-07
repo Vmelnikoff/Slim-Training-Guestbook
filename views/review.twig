@@ -1,0 +1,27 @@
+
+{% extends 'layouts/layout.inc.twig' %}
+
+
+{% block title %}Training guest book - Страница отзыва{% endblock %}
+{% block description %}Описание страницы для SEO{% endblock %}
+{% block keywords %}Ключевые слова для SEO{% endblock %}
+
+{% block content %}
+
+    <div class="starter-template">
+        <h1>Страница отзыва</h1>
+        <p><a href="/form">Добавить отзыв</a></p>
+        <p><a href="/">Вернуться на главную</a></p>
+    </div>
+
+    <div class="note">
+        <p>
+            <span class="date">{{ review.created_at|date("Y-m-d") }}</span>
+            <span class="name">{{ review.first_name }}</span>
+        </p>
+        <p>{{ review.note }}</p>
+        <p>{{ review.likes }} голосов</p>
+        <p><a href="/review/{{ prev }}">Предыдущий отзыв</a> | <a href="/review/{{ next }}">Следующий отзыв</a></p>
+    </div>
+
+{% endblock %}
